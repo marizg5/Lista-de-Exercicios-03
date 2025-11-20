@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Exercícios 03 </title>
+    
+    <style>
+    body{
+      background-color: #F0F0F0 ;
+    }
+    
+      details{
+        margin-bottom: 10px;
+        border: 1px solid #000;
+        padding: 10px;
+        border-radius: 5px;
+        background: #FFC0CB;
+        /*font-size-adjust: 0.35;*/
+      }
+      summary{
+        font-weight: lighter;
+        /*font-size-adjust: 0.35;*/
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  
+  <body>
+      <h1> Lista de Exercícios 03 </h1>
+      
+      <details>
+        <summary> Exercício 01: Área da superfície de uma esfera </summary>
+        <p> Informe o raio da esfera: </p>
+        <input type = 'number' id = 'in01'/>
+        <button onclick = 'Area_esfera()'> Calcular </button>
+        <p id = 'out01' > </p>
+        
+        <script>
+          const PI = 3.141592;
+          
+          
+          function decimal(numero, ponto){
+            if(isNaN(numero)){
+              return 0;
+            } else {
+              numero = numero.toFixed(ponto);
+              numero = numero.toString();
+              numero = numero.replace('.', ',');
+              return numero;
+            }
+          }
+         function Area_esfera(){
+            let n01 = parseFloat(document.getElementById('in01').value);
+            let res01 = '';
+            let area_esf = 0;
+            
+            if(isNaN(n01)){
+              res01 = 'Informe um raio válido!';
+            }else{
+              if(n01 <= 0){
+                res01 = 'Erro! O raio informado não existe!';
+              }else{
+                area_esf = 4 * PI * (n01 ** 2);
+                res01 = 'A área da esfera é de: ' + decimal(area_esf, 2) + 'cm²';
+              }
+            }
+            document.getElementById('out01').textContent = res01;
+          }
+        </script>
+      </details>
+      
+       <details>
+        <summary> Exercício 02: O volume de uma esfera </summary>
+        <p> Informe o raio da esfera: </p>
+        <input type = 'number' id = 'in02'/>
+        <button onclick = 'Vol_esfera()'> Calcular </button>
+        <p id = 'out02' > </p>
+        
+        <script>
+          function Vol_esfera(){
+          let n02 = parseFloat(document.getElementById('in02').value);
+          let res02 = '';
+          let vol_esf = 0;
+          
+          if(isNaN(n02)){
+              res02 = 'Informe um raio válido!';
+            }else{
+              if(n02 <= 0){
+                res02 = 'Erro! O raio informado não existe!';
+              }else{
+                vol_esf = (4/3) * PI * (n02 ** 3);
+                res02 = 'O volume da esfera é de: ' + decimal(vol_esf, 2) + 'cm³';
+              }
+            }
+            document.getElementById('out02').textContent = res02;
+          }
+        </script>
+        </details>
+        
+        <details>
+        <summary> Exercício 03: A área das faces de um cubo </summary>
+        <p> Informe o comprimento da aresta: </p>
+        
+        <input type = 'number' id = 'in03'/>
+        <button onclick = 'Area_cubo()'> Calcular </button>
+        <p id = 'out03' > </p>
+        
+        <script>
+          function Area_cubo (){
+            let n03 = parseFloat(document.getElementById('in03').value);
+            let res03 = '';
+            let area_face = 0;
+            
+            if(isNaN(n03)){
+              res03 = 'Informe uma aresta válida!';
+            }else{
+              if(n03 <= 0){
+                res03 = 'Erro! A aresta informada não existe!';
+              }else{
+                area_face = n03 ** 2;
+                res03 = 'A área da face: ' + decimal(area_face, 2) + 'cm² <br>';
+                res03 = res03 + 'A área total das faces: ' + decimal((6 * area_face), 2) + 'cm²';
+              }
+            }
+            document.getElementById('out03').innerHTML = res03;
+          }
+        </script>
+      </details>
+        
+       <details>
+        <summary> Exercício 04: Volume do cubo </summary>
+        <p> Informe o comprimento da aresta: </p>
+        <input type = 'number' id = 'in04'/>
+        <button onclick = 'Vol_cubo()'> Calcular </button>
+        <p id = 'out04' > </p>
+        
+        <script>
+          function Vol_cubo(){
+          let n04 = parseFloat(document.getElementById('in04').value);
+          let res04 = '';
+          let Vol_cubo = 0;
+          
+          if(isNaN(n04)){
+              res04 = 'Informe uma aresta válida!';
+            }else{
+              if(n04 <= 0){
+                res04 = 'Erro! A aresta informada não existe!';
+              }else{
+                Vol_cubo = (n04 ** 3);
+                res04 = 'O volume do cubo é de: ' + decimal(Vol_cubo, 2) + 'cm³';
+              }
+            }
+            document.getElementById('out04').textContent = res04;
+           }
+        </script>
+      </details>
+      
+        <details>
+        <summary> Exercício 05: A área da superfície de um paralelepípedo  </summary>
+        <p> Informe a altura do paralelepípedo: </p>
+        <input type = 'number' id = 'in05'/>
+        <p> Informe a largura do paralelepípedo: </p>
+        <input type = 'number' id = 'in06'/>
+        <p> Informe a profundidade do paralelepípedo: </p>
+        <input type = 'number' id = 'in07'/>
+        <button onclick = 'Area_par()'> Calcular </button>
+        <p id = 'out05' > </p>
+        
+        <script>
+          function Area_par(){
+           let alt = parseFloat(document.getElementById('in05').value); //altura
+           let lar = parseFloat(document.getElementById('in06').value); //largura
+           let pro = parseFloat(document.getElementById('in07').value); // profundidade
+           let res05 = '';
+           let are_pa = 0;
+           let A1 = 0, A2 = 0, A3 = 0;
+           
+           if(isNaN(alt) || isNaN (lar) || isNaN (pro)){
+             res05 = 'Informe um valor válido!';
+           }else{
+             if(alt <= 0 || lar <= 0 || pro <= 0){
+              res05 = 'Erro, não existem dimensões negativas!';
+            }else{
+              A1 = lar * alt * 2; //largura X altura.
+              A2 = lar * pro * 2; //largura X profundidade.
+              A3 = alt * pro * 2; //altura X profundidade.
+              are_pa = A1 + A2 + A3;
+              res05 = 'Área do paralelepípedo: ' + decimal(are_pa, 2) + 'cm²';
+            } 
+          }  
+           document.getElementById('out05').innerHTML = res05;
+          }
+        </script>
+      </details>
+
+      <details>
+      <summary> Exercício 06: O Volume do paralelepípedo </summary>  
+      <p> Informe a profundidade do paralelepípedo: </p>
+      <input type = 'number' id = 'in08'/>
+      <p> Informe a altura do paralelepípedo: </p>
+      <input type = 'number' id = 'in09'/>
+      <p> Informe a largura do paralelepípedo: </p>
+      <input type = 'number' id = 'in10'/>
+
+      <button onclick = 'Volume_par()'> Calcular </button>
+      <p id = 'out06'> </p>
+      
+      <script>
+        function Volume_par(){
+          let n08 = parseFloat(document.getElementById('in08').value); //altura
+          let n09 = parseFloat(document.getElementById('in09').value); //largura
+          let n10 = parseFloat(document.getElementById('in10').value); //profundidade
+          let res06 = '';
+          let volume_par = 0;
+          
+          if(isNaN(n08) || isNaN(n09) || isNaN(n10)){
+            res06 = 'Informe todas as dimensões corretamente!';
+          }else{
+            if(n08 <= 0 || n09 <= 0 || n10 <= 0){
+              res06 = 'Erro, não existem dimensões negativas!';
+            }else{
+              volume_par = n08 * n09 * n10;
+              res06 = 'Volume do paralelepípedo: ' + decimal(volume_par, 2) + 'cm³';
+            }
+          }
+          document.getElementById('out06').innerHTML = res06;
+        }
+      </script>
+    </details>
+
+        <details>
+        <summary> Exercício 07: Conversão de unidade de comprimento </summary>
+        <p> Escolha a unidade de entrada: </p>
+        <select id = 'uni_entr'>
+          <option value = 'm'> Metros </option>
+          <option value = 'cm'> Centímetros </option>
+          <option value = 'mm'> Milímetros </option>
+          <option value = 'km'> Quilômetros </option>
+          <option value = 'in'> Polegadas </option>
+        </select>
+        <p> Informe o valor que deseja converter: </p>
+        <input type = 'number' id = 'in11'/>
+        <p> Escolha a unidade de saída: </p>
+        <select id = 'uni_said'>
+          <option value = 'm'> Metros </option>
+          <option value = 'cm'> Centímetros </option>
+          <option value = 'mm'> Milímetros </option>
+          <option value = 'km'> Quilômetros </option>
+          <option value = 'in'> Polegadas </option>
+        </select>
+        <button onclick = 'Converter()'> Converter </button>
+        <p id = 'out07'></p>
+        
+        <script>
+          function Converter(){
+            let uni_entr = document.getElementById('uni_entr').value;
+            let n11 = parseFloat(document.getElementById('in11').value);
+            let uni_said = document.getElementById('uni_said').value;
+            let res07 = '';
+            let uni = 0;
+            
+        if(isNaN(n11)){
+          res07 = 'Valor inválido!';
+        }else{
+          switch(uni_entr){
+            case 'm':
+            uni = n11;
+            break;
+            
+            case 'cm':
+            uni = n11 * 0.01; //Covertendo de cm para m.
+            break;
+              
+            case 'mm':
+            uni = n11 * 0.001;
+            break;
+                  
+            case 'km':
+            uni = n11 * 1000;
+            break;
+                    
+            case 'in':
+            uni = n11 * 0.0254;
+            break;
+                  }
+                    
+            switch(uni_said){
+            case 'm':
+            uni = uni;
+            break;
+                    
+            case 'cm':
+            uni = uni / 0.01;
+            break;
+                      
+            case 'mm':
+            uni = uni / 0.001;
+            break;
+                          
+            case 'km':
+            uni = uni / 1000;
+            break;
+                            
+            case 'in':
+            uni = uni / 0.0254;
+            break;
+                  }
+           res07 = 'Resultado: ' + decimal(uni, 2) + ' ' + uni_said;
+
+                  }
+        document.getElementById('out07').textContent = res07;
+            }
+      </script>
+      </details>
+
+      <details>
+      <summary> Exercício 08: Conversão de unidades de volume </summary>
+      <p> Escolha a unidade de entrada: </p>
+    <select id = 'uni_ent_v'>
+      <option value = 'm³'> Metros Cúbicos </option>
+      <option value = 'L'> Litros </option>
+      <option value = 'cm³'> Centímetros Cúbicos </option>
+      <option value = 'mm³'> Milímetros Cúbicos </option>
+      <option value = 'gal'> Galões </option>
+    </select>
+    <p> Informe o valor que deseja converter: </p>
+    <input type = 'number' id = 'in12'/>
+    <p> Escolha a unidade de saída: </p>
+    <select id = 'uni_sai_v'>
+      <option value = 'm³'> Metros Cúbicos </option>
+      <option value = 'L'> Litros </option>
+      <option value = 'cm³'> Centímetros Cúbicos </option>
+      <option value = 'mm³'> Milímetros Cúbicos </option>
+      <option value = 'gal'> Galões </option>
+      </select>
+    <button onclick = 'Converter_v()'> Converter </button>
+    <p id = 'out08'></p>
+    
+    <script>
+      function Converter_v(){
+        let uni_ent_v = document.getElementById('uni_ent_v').value;
+        let n12 = parseFloat(document.getElementById('in12').value);
+        let uni_sai_v = document.getElementById('uni_sai_v').value;
+        let res08 = '';
+        let uni = 0;
+        
+        if(isNaN(n12)){
+          res08 = 'Valor inválido!';
+        }else{
+          switch(uni_ent_v){
+            
+         case 'L':
+         uni = n12; 
+         break;  
+            
+        case 'm³': uni = n12 * 1000;
+        break;
+            
+        case 'cm³':
+        uni = n12 * 0.001; //Converte de cm³ para  L
+        break;
+                  
+        case 'mm³':
+        uni = n12 * 0.000001; //Converte de mm³ para  L
+        break;
+                    
+        case 'gal':
+        uni = n12 * 3.7854096684; //Converte de gal para  L
+        break;
+              }
+                    
+        switch(uni_sai_v){
+                      
+        case 'L':
+        uni = uni;
+        break;  
+                      
+        case 'm³':
+        uni = uni / 1000;
+        break;
+                    
+        case 'cm³':
+        uni = uni / 0.001;
+        break;
+                          
+        case 'mm³':
+        uni = uni / 0.000001;
+        break;
+                            
+        case 'gal':
+        uni = uni / 3.7854096684;
+        break;
+             }
+        res08 = decimal(uni, 2) + ' ' + uni_sai_v;
+                          }
+        document.getElementById('out08').textContent = res08;
+       }
+      </script>
+    </details>
+
+      <details>
+      <summary> Exercício 09: Área das superfícies de um cone </summary>
+      <p> Informe a altura do cone: </p>
+      <input type = 'number' id = 'in13'/>
+      <p> Informe o raio da base: </p>
+      <input type = 'number' id = 'in14'/>
+      <button onclick = 'Area_cone()'> Calcular </button>
+      <p id = 'out09'> </p>
+      
+      <script>
+        function Area_cone(){
+          let n13 = parseFloat(document.getElementById('in13').value); //altura.
+          let n14 = parseFloat(document.getElementById('in14').value); //raio.
+          let res09 = '';
+          let area_t = 0, area_b = 0, area_l = 0, g = 0;
+          
+          if(isNaN(n13) || isNaN(n14)){
+            res09 = 'Informe valores válidos!';
+          }else{
+            if(n13 <= 0 || n14 <= 0){
+              res09 = 'Erro, dimensões incorretas!';
+            }else{
+              g = Math.sqrt((n13 ** 2) + (n14 ** 2));
+              area_b = PI * (n14 ** 2);
+              area_l = PI * n14 * g;
+              area_t = area_b + area_t;
+              res09 = 'Área das superfícies do cone: ' + decimal(area_t, 2) + 'cm²';
+            }
+          }
+          document.getElementById('out09').innerHTML = res09;
+        }
+        
+        function Calc_AC(altura, raio){
+          let area_t = 0, area_b = 0, area_l = 0, g = 0;
+          
+          g = Math.sqrt((altura ** 2) + (raio ** 2)); //Calcula a geratriz.
+          area_b = PI * (raio ** 2); //Calcula a área da base.
+          area_l = PI * raio * g; //Calcula a área lateral.
+          area_t = area_b + area_l; //Somatória das duas áreas;
+          
+          return area_t; //Retorna a área das superfícies do cone.
+        }
+      </script>
+    </details>
+    
+      <details>
+      <summary> Exercício 10: Volume de um cone </summary>
+      <p> Informe a altura do cone: </p>
+      <input type = 'number' id = 'in15'/>
+      <p> Informe o raio da base: </p>
+      <input type = 'number' id = 'in16'/>
+      <button onclick = 'Vol_cone()'> Calcular </button>
+      <p id = 'out10'> </p>
+      
+      <script>
+        function Vol_cone(){
+          let n15 = parseFloat(document.getElementById('in15').value);
+          let n16 = parseFloat(document.getElementById('in16').value);
+          let res10 = '';
+          
+           if(isNaN(n15) || isNaN(n16)){
+             res10 = 'Informe valores válidos!';
+           }else 
+           if(n15 <= 0 || n16 <= 0){
+             res10 = 'Erro, dimensões inválidas!';
+           }else{
+             res10 = 'Volume do cone: ' + decimal(Calc_VC(n15, n16), 2) + 'cm³';
+           }
+          document.getElementById('out10').textContent = res10; 
+        } 
+         function Calc_VC(altura, raio){
+        return (1/3) * PI * raio * raio * altura;  
+        }
+      </script>
+    </details>
+    
+      <details>
+      <summary> Exercício 11 : Conta vogais </summary>
+      <p> Informe uma palavra: </p>
+      <input type = 'text' id = 'in17'/>
+      <button onclick = 'Vogais()'> Contar </button>
+      <p id = 'out11'> </p>
+      
+      <script>
+        function Vogais(){
+          let texto = document.getElementById('in17').value;
+          let res11 = '';
+          let n_letras = texto.length;
+          let nv = 0;
+          
+          for(let i = 0; i < n_letras; i++){
+            
+            switch(texto[i]){
+                case 'A':
+                case 'a':
+                  
+                case 'E':
+                case 'e':
+                  
+                case 'I':
+                case 'i':
+                  
+                case 'O':
+                case 'o':
+                  
+                case 'U':
+                case 'u':
+                      
+                nv++;
+                break;
+            }
+          }
+        res11 = nv;
+        document.getElementById('out11').textContent = res11;
+      }
+      </script>
+    </details>
+    
+      <details>
+      <summary> Exercício 12 : Invertendo a Sequência </summary>
+      <p> Informe uma palavra: </p>
+      <input type = 'text' id = 'in18'/>
+      <button onclick = 'Inverter()'> Inverter </button>
+      <p id = 'out12'> </p>
+      
+      <script>
+        function Inverter(){
+          let palavra = document.getElementById('in18').value;
+          let res12 = '';
+          let n_letras = palavra.length;
+          
+          for(let i = n_letras - 1; i >= 0; i--){
+            res12 = res12 + palavra [i];
+          }
+          document.getElementById('out12').textContent = res12;
+        }
+      </script>
+    </details>
+        
+   </body>
+  </html>
